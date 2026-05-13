@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Signup() {
 
@@ -28,25 +29,27 @@ function Signup() {
     } catch (error) {
 
       alert("Signup Failed");
-
-      console.log(error);
-
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <>
+    <div className="min-h-screen bg-gradient-to-r from-green-500 to-emerald-700 flex justify-center items-center">
 
-      <div className="bg-white p-10 rounded-xl shadow-lg w-[400px]">
+      <div className="bg-white w-[420px] p-10 rounded-2xl shadow-2xl">
 
-        <h1 className="text-3xl font-bold text-center mb-6">
-          Signup
+        <h1 className="text-4xl font-bold text-center text-green-700 mb-3">
+          Create Account
         </h1>
+
+        <p className="text-center text-gray-500 mb-8">
+          Signup to start building websites
+        </p>
 
         <input
           type="text"
-          placeholder="Name"
-          className="border p-3 rounded w-full mb-4"
+          placeholder="Enter Name"
+          className="w-full border p-3 rounded-lg mb-4"
           onChange={(e) =>
             setForm({
               ...form,
@@ -57,8 +60,8 @@ function Signup() {
 
         <input
           type="email"
-          placeholder="Email"
-          className="border p-3 rounded w-full mb-4"
+          placeholder="Enter Email"
+          className="w-full border p-3 rounded-lg mb-4"
           onChange={(e) =>
             setForm({
               ...form,
@@ -69,8 +72,8 @@ function Signup() {
 
         <input
           type="password"
-          placeholder="Password"
-          className="border p-3 rounded w-full mb-4"
+          placeholder="Enter Password"
+          className="w-full border p-3 rounded-lg mb-5"
           onChange={(e) =>
             setForm({
               ...form,
@@ -81,18 +84,18 @@ function Signup() {
 
         <button
           onClick={signup}
-          className="bg-green-500 hover:bg-green-600 text-white w-full py-3 rounded"
+          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold"
         >
           Signup
         </button>
 
-        <p className="mt-4 text-center">
+        <p className="text-center mt-5 text-gray-600">
 
           Already have an account?
 
           <Link
             to="/"
-            className="text-blue-500 ml-2"
+            className="text-green-600 font-semibold ml-2"
           >
             Login
           </Link>
@@ -101,7 +104,14 @@ function Signup() {
 
       </div>
 
-    </div>
+      
+
+  
+  </div>
+
+  <Footer />
+   </>
+    
   );
 }
 

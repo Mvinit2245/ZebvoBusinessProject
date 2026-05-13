@@ -1,8 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Login() {
+
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,56 +24,57 @@ function Login() {
 
       localStorage.setItem("token", res.data.token);
 
-      alert("Login Successful");
-
-      window.location = "/dashboard";
+      navigate("/dashboard");
 
     } catch (error) {
 
       alert("Invalid Credentials");
-
-      console.log(error);
-
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
 
-      <div className="bg-white p-10 rounded-xl shadow-lg w-[400px]">
+    <>
+    <div className="min-h-screen bg-gradient-to-r from-blue-600 to-indigo-700 flex justify-center items-center">
 
-        <h1 className="text-3xl font-bold text-center mb-6">
-          Login
+      <div className="bg-white w-[400px] p-10 rounded-2xl shadow-2xl">
+
+        <h1 className="text-4xl font-bold text-center text-blue-700 mb-3">
+          Welcome Back
         </h1>
+
+        <p className="text-center text-gray-500 mb-8">
+          Login to AI Website generator
+        </p>
 
         <input
           type="email"
-          placeholder="Email"
-          className="border p-3 rounded w-full mb-4"
+          placeholder="Enter Email"
+          className="w-full border p-3 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
-          placeholder="Password"
-          className="border p-3 rounded w-full mb-4"
+          placeholder="Enter Password"
+          className="w-full border p-3 rounded-lg mb-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button
           onClick={login}
-          className="bg-blue-500 hover:bg-blue-600 text-white w-full py-3 rounded"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-300"
         >
           Login
         </button>
 
-        <p className="mt-4 text-center">
+        <p className="text-center mt-5 text-gray-600">
 
           Don't have an account?
 
           <Link
             to="/signup"
-            className="text-blue-500 ml-2"
+            className="text-blue-600 font-semibold ml-2"
           >
             Signup
           </Link>
@@ -78,8 +82,11 @@ function Login() {
         </p>
 
       </div>
-
+     
     </div>
+      <Footer />
+    </>
+    
   );
 }
 
